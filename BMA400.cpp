@@ -166,7 +166,7 @@ int16_t BMA400::getTemperature(void) {
     int16_t temp = 0;
 
     data = (int8_t)read8(BMA400_TEMP_DATA);
-    //temp = data / 2 + 23;
+    //temp = (signed)data / 2 + 23;
     temp = (int16_t)(((int8_t)data) * 5) + 230;
     return temp;
 }
