@@ -238,4 +238,26 @@ void BMA400::read(uint8_t reg, uint8_t* buf, uint16_t len) {
     }
 }
 
+void BMA400::setOrientationChangeInterrupt() {
+//    write8(BMA400_INT_1_MAP, 0x02);
+//    write8(BMA400_INT_CONFIG_1, 0x00);
+//    write8(BMA400_INT_1_2_CTRL, 0x02);
+//    write8(BMA400_GEN_1_INT_CONFIG_0, 0xFA);
+//    write8(BMA400_GEN_1_INT_CONFIG_1, 0x02);
+//    write8(BMA400_GEN_1_INT_CONFIG_2, 0x10);
+//    write8(BMA400_GEN_1_INT_CONFIG_3, 0x00);
+//    write8(BMA400_GEN_1_INT_CONFIG_3_1, 0x0f);
+//    write8(BMA400_INT_CONFIG_0, 0x02);
+
+    write8(BMA400_INT_1_MAP, 0x04);
+    write8(BMA400_INT_CONFIG_1, 0x00);
+    write8(BMA400_INT_1_2_CTRL, 0x02);
+    write8(BMA400_GEN_1_INT_CONFIG_0, 0xFA);
+    write8(BMA400_GEN_1_INT_CONFIG_1, 0x01);
+    write8(BMA400_GEN_1_INT_CONFIG_2, 0x10);
+    write8(BMA400_GEN_1_INT_CONFIG_3, 0x00);
+    write8(BMA400_GEN_1_INT_CONFIG_3_1, 0x0f);
+    write8(BMA400_INT_CONFIG_0, 0x04);
+}
+
 BMA400 bma400;
