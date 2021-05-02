@@ -200,6 +200,7 @@ class BMA400 {
     void setFullScaleRange(scale_type_t range);
     void setOutputDataRate(odr_type_t odr);
     void setOrientationChangeInterrupt();
+    void setTapDetectionInterrupt();
 
     void getAcceleration(float* x, float* y, float* z);
     float getAccelerationX(void);

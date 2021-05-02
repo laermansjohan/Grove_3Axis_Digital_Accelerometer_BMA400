@@ -249,15 +249,47 @@ void BMA400::setOrientationChangeInterrupt() {
 //    write8(BMA400_GEN_1_INT_CONFIG_3_1, 0x0f);
 //    write8(BMA400_INT_CONFIG_0, 0x02);
 
-    write8(BMA400_INT_1_MAP, 0x04);
+    write8(BMA400_INT_1_MAP, 0x02);
+
     write8(BMA400_INT_CONFIG_1, 0x00);
     write8(BMA400_INT_1_2_CTRL, 0x02);
-    write8(BMA400_GEN_1_INT_CONFIG_0, 0xFA);
-    write8(BMA400_GEN_1_INT_CONFIG_1, 0x01);
-    write8(BMA400_GEN_1_INT_CONFIG_2, 0x10);
-    write8(BMA400_GEN_1_INT_CONFIG_3, 0x00);
-    write8(BMA400_GEN_1_INT_CONFIG_3_1, 0x0f);
-    write8(BMA400_INT_CONFIG_0, 0x04);
+    write8(BMA400_ORIENTCH_CONFIG_0, 0xE4);
+    write8(BMA400_ORIENTCH_CONFIG_1, 0x60); //8mg/lsb
+   // write8(BMA400_ORIENTCH_CONFIG_2, 0xF0); //duration
+    write8(BMA400_ORIENTCH_CONFIG_3, 0xA0); //duration
+//    write8(BMA400_ORIENTCH_CONFIG_4, 0x0f);
+//    write8(BMA400_ORIENTCH_CONFIG_5, 0x04);
+//    write8(BMA400_ORIENTCH_CONFIG_6, 0xFA);
+//    write8(BMA400_ORIENTCH_CONFIG_7, 0x01);
+//    write8(BMA400_ORIENTCH_CONFIG_8, 0x10);
+//    write8(BMA400_ORIENTCH_CONFIG_9, 0x00);
+    //write8(BMA400_INT_CONFIG_0, 0x02);
+    write8(BMA400_INT_CONFIG_0, 0x02);
+
+}
+
+void BMA400::setTapDetectionInterrupt() {
+    //    write8(BMA400_INT_1_MAP, 0x02);
+//    write8(BMA400_INT_CONFIG_1, 0x00);
+//    write8(BMA400_INT_1_2_CTRL, 0x02);
+//    write8(BMA400_GEN_1_INT_CONFIG_0, 0xFA);
+//    write8(BMA400_GEN_1_INT_CONFIG_1, 0x02);
+//    write8(BMA400_GEN_1_INT_CONFIG_2, 0x10);
+//    write8(BMA400_GEN_1_INT_CONFIG_3, 0x00);
+//    write8(BMA400_GEN_1_INT_CONFIG_3_1, 0x0f);
+//    write8(BMA400_INT_CONFIG_0, 0x02);
+
+
+////orientation change
+//    write8(BMA400_INT_1_MAP, 0x02);
+//    write8(BMA400_INT_CONFIG_1, 0x00);
+//    write8(BMA400_INT_1_2_CTRL, 0x02);
+//    write8(BMA400_ORIENTCH_CONFIG_0, 0xE4);
+//    write8(BMA400_ORIENTCH_CONFIG_1, 0x60); //8mg/lsb
+//    write8(BMA400_ORIENTCH_CONFIG_3, 0xA0); //duration
+//    write8(BMA400_INT_CONFIG_0, 0x02);
+
+
 }
 
 BMA400 bma400;
