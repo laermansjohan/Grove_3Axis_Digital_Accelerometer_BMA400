@@ -248,11 +248,14 @@ void BMA400::setOrientationChangeInterrupt() {
 //    write8(BMA400_GEN_1_INT_CONFIG_3, 0x00);
 //    write8(BMA400_GEN_1_INT_CONFIG_3_1, 0x0f);
 //    write8(BMA400_INT_CONFIG_0, 0x02);
+    int8_t data = 0;
+    data = read8(BMA400_INT_1_MAP);
+    write8(BMA400_INT_1_MAP, data | 0x02);
 
-    write8(BMA400_INT_1_MAP, 0x02);
+    //write8(BMA400_INT_CONFIG_1, 0x00);  //even uitgecomment, in principe niet nodig
+    data = read8(BMA400_INT_1_2_CTRL);
+    write8(BMA400_INT_1_2_CTRL, data | 0x02);
 
-    write8(BMA400_INT_CONFIG_1, 0x00);
-    write8(BMA400_INT_1_2_CTRL, 0x02);
     write8(BMA400_ORIENTCH_CONFIG_0, 0xE4);
     write8(BMA400_ORIENTCH_CONFIG_1, 0x60); //8mg/lsb
    // write8(BMA400_ORIENTCH_CONFIG_2, 0xF0); //duration
@@ -269,6 +272,23 @@ void BMA400::setOrientationChangeInterrupt() {
 }
 
 void BMA400::setTapDetectionInterrupt() {
+
+    int8_t data = 0;
+    data = read8(BMA400_INT_1_2_MAP);
+    write8(BMA400_INT_1_2_MAP, data | 0x40);
+
+    data = read8(BMA400_INT_CONFIG_1);
+    write8(BMA400_INT_CONFIG_1, data | 0x04);
+
+    data = read8(BMA400_INT_1_2_CTRL);
+    write8(BMA400_INT_1_2_CTRL, data | 0x20);
+
+   // data = read8(BMA400_TAP_CONFIG_0);
+    write8(BMA400_TAP_CONFIG_0, 0x02);
+
+   // data = read8(BMA400_TAP_CONFIG_1);
+    write8(BMA400_TAP_CONFIG_1, 0x06);
+
     //    write8(BMA400_INT_1_MAP, 0x02);
 //    write8(BMA400_INT_CONFIG_1, 0x00);
 //    write8(BMA400_INT_1_2_CTRL, 0x02);
