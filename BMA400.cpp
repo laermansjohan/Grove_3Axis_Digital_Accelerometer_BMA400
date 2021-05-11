@@ -271,7 +271,7 @@ void BMA400::setOrientationChangeInterrupt() {
 
 }
 
-void BMA400::setTapDetectionInterrupt() {
+void BMA400::setTapDetectionInterrupt(byte sens,byte axis,byte ticsTime) {
 
     int8_t data = 0;
     data = read8(BMA400_INT_1_2_MAP);
@@ -284,10 +284,14 @@ void BMA400::setTapDetectionInterrupt() {
     write8(BMA400_INT_1_2_CTRL, data | 0x20);
 
    // data = read8(BMA400_TAP_CONFIG_0);
-    write8(BMA400_TAP_CONFIG_0, 0x02);
-
+   byte temp = 0;
+   temp = sens & 0x7;
+   temp = temp | ((axis << 3) & 0x18);
+    write8(BMA400_TAP_CONFIG_0, temp);  //used to be 0x02
+    temp = 0x2c;
+    temp = temp | (ticsTime & 0x3);
    // data = read8(BMA400_TAP_CONFIG_1);
-    write8(BMA400_TAP_CONFIG_1, 0x06);
+    write8(BMA400_TAP_CONFIG_1, temp);
 
     //    write8(BMA400_INT_1_MAP, 0x02);
 //    write8(BMA400_INT_CONFIG_1, 0x00);
